@@ -3,7 +3,12 @@
     package="com.example.multimedia.juniorseoul">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+    <meta-data
+        android:name="com.kakao.sdk.AppKey"
+        android:value="1e10c6bb9dc91481b02f90ccc00f2e21" />
+    '
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,7 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".KidsCafeActivity" />
+        <activity android:name=".KidsCafeDetailActivity" />
+        <activity android:name=".KidsCafeListActivity"></activity>
     </application>
 
 </manifest>
