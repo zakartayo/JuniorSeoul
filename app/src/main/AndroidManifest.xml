@@ -27,7 +27,10 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".KidsCafeActivity" />
         <activity android:name=".KidsCafeDetailActivity" />
-        <activity android:name=".KidsCafeListActivity"></activity>
+        <activity android:name=".KidsCafeListActivity" />
+        <activity android:name=".MuseumArtActivity" />
+        <activity android:name=".MuseumArtListActivity" />
+        <activity android:name=".MuseumArtDetailActivity"></activity>
     </application>
 
 </manifest>

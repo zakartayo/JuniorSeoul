@@ -12,7 +12,7 @@ import kr.go.seoul.airquality.AirQualityButtonTypeA;
 public class MainActivity extends AppCompatActivity {
     private AirQualityButtonTypeA typeAbtn;
     private String openApiKey = "4852536450646c6738336c4e7a7a50";
-    private ImageView kidsCafe;
+    private ImageView kidsCafe, museum_art;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,11 +23,19 @@ public class MainActivity extends AppCompatActivity {
         typeAbtn.setButtonImage(R.drawable.weather_check_img);
 
         kidsCafe = (ImageView)findViewById(R.id.kids_cafe);
+        museum_art = (ImageView)findViewById(R.id.museum_art);
 
         kidsCafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), KidsCafeActivity.class);
+                startActivity(intent);
+            }
+        });
+        museum_art.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MuseumArtActivity.class);
                 startActivity(intent);
             }
         });

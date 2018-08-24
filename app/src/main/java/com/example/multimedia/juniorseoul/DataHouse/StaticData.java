@@ -1,6 +1,9 @@
 package com.example.multimedia.juniorseoul.DataHouse;
 
+import com.example.multimedia.juniorseoul.Classess.ArtModel;
 import com.example.multimedia.juniorseoul.Classess.KidsCafeModel;
+import com.example.multimedia.juniorseoul.Classess.MemorialModel;
+import com.example.multimedia.juniorseoul.Classess.MuseumModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -279,6 +282,25 @@ public class StaticData {
             add(new KidsCafeModel("점프스쿨", "서울특별시 양천구 목동로 234, 지상6층 (목동, 경원빌딩)", "", 37.5293524, 126.8644931));
             add(new KidsCafeModel("점프스쿨", "서울특별시 양천구 목동로 234, 지상6층 (목동, 경원빌딩)", "", 37.5293524, 126.8644931));
             add(new KidsCafeModel("점프스쿨", "서울특별시 양천구 목동로 234, 지상6층 (목동, 경원빌딩)", "", 37.5293524, 126.8644931));
+        }
+    };
+    public static List<ArtModel> artDatas = new ArrayList<ArtModel>(){
+        {
+            add(new ArtModel("서울특별시 시립미술관", "서울특별시 중구 덕수궁길 61",	37.564107,	126.973699,	"02-2124-8800", "서울특별시",	"sema.seoul.go.kr",	true, 0,	0,	0));
+            add(new ArtModel("남서울특별시 미술관", "서울특별시 관악구 남부순환로 2476",	37.476167,	126.979564,	"02-598-6245", "서울특별시",	"sema.seoul.go.kr",	true, 0, 0,	0));
+            add(new ArtModel("성북구립미술관", "서울특별시 성북구 성북로 134",	37.594821,	126.994897,	"02-6925-5011",	"성북구", "http://sma.sbculture.or.kr/", true,	2000,	1000,	0));
+            add(new ArtModel("종로구립 박노수미술관", "서울특별시 종로구 옥인1길 34",	37.581322,	126.966761,	"02-2148-4171", "종로구청/종로문화재단", "www.jfac.or.kr", true, 	3000,	1800,	1200));
+            add(new ArtModel("(재)한원미술관", "서울특별시 서초구 남부순환로 2423 한원빌딩 B1",	37.594837,	126.994886,	"02-588-5642", "하동환",	"www.hanwon.org"));
+        }
+    };
+    public static List<MuseumModel> museumDatas = new ArrayList<MuseumModel>(){
+        {
+            add(new MuseumModel("둘리뮤지엄",	"서울특별시 도봉구 시루봉로 1길 6",	37.65243153, 127.0276397, "02-990-2200",	"도봉구", "doolymuseum.or.kr", true,	5000,	5000,	5000));
+        }
+    };
+    public static List<MemorialModel> memorialDatas = new ArrayList<MemorialModel>(){
+        {
+            add(new MemorialModel("손기정기념관",	"서울특별시 중구 손기정로 101",	37.55562546, 126.9638899, "02-364-1936",	"서울특별시 중구청",	"www.sonkeechung.com", true,	0,	0,	0));
         }
     };
 
