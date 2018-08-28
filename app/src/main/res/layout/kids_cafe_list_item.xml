@@ -5,12 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <ImageView
+        android:id="@+id/kids_cafe_mainImg"
+        android:layout_width="280dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:paddingTop="10dp"
+        android:scaleType="fitXY"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/kids_cafe_list_name"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textSize="24sp"/>
+        android:orientation="horizontal"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/kids_cafe_list_name"
+            android:paddingLeft="35dp"
+            android:paddingStart="35dp"
+            android:paddingTop="5dp"
+            android:textSize="18sp"/>
+        <RatingBar
+            android:id="@+id/kids_cafe_ratingbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:isIndicator="false"
+            style="?android:attr/ratingBarStyleSmall"
+            android:numStars="5"
+            android:rating="3"
+            android:stepSize="0.5"
+            android:max="5"
+            android:paddingTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"/>
+    </LinearLayout>
+
 
 </LinearLayout>

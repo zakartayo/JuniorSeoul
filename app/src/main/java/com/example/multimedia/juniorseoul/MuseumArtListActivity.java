@@ -8,19 +8,19 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.multimedia.juniorseoul.Adapter.KidsCafeListAdapter;
+import com.example.multimedia.juniorseoul.Adapter.MuseumArtListAdapter;
 import com.example.multimedia.juniorseoul.Classess.ArtModel;
 import com.example.multimedia.juniorseoul.Classess.MemorialModel;
 import com.example.multimedia.juniorseoul.Classess.MuseumModel;
 import com.example.multimedia.juniorseoul.DataHouse.StaticData;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MuseumArtListActivity extends AppCompatActivity {
 
     private int which_data;
     private ListView listview;
-    private KidsCafeListAdapter adapter;
+    private MuseumArtListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class MuseumArtListActivity extends AppCompatActivity {
 
         listview = (ListView)findViewById(R.id.museum_art_listview);
 
-        adapter = new KidsCafeListAdapter();
+        adapter = new MuseumArtListAdapter();
 
         listview.setAdapter(adapter);
 

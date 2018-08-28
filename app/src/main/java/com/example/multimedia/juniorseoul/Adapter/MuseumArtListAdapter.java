@@ -1,24 +1,22 @@
 package com.example.multimedia.juniorseoul.Adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.multimedia.juniorseoul.Classess.KidsCafeListItem;
+import com.example.multimedia.juniorseoul.Classess.MuseumArtListItem;
 import com.example.multimedia.juniorseoul.R;
 
 import java.util.ArrayList;
 
-public class KidsCafeListAdapter extends BaseAdapter {
-    private ArrayList<KidsCafeListItem> listViewItemList = new ArrayList<>();
+public class MuseumArtListAdapter extends BaseAdapter {
+    private ArrayList<MuseumArtListItem> listViewItemList = new ArrayList<>();
 
-    public KidsCafeListAdapter(){
+    public MuseumArtListAdapter(){
 
     }
 
@@ -38,17 +36,12 @@ public class KidsCafeListAdapter extends BaseAdapter {
         }
 
         TextView nameTextView = (TextView) convertView.findViewById(R.id.kids_cafe_list_name) ;
-        ImageView mainImg = (ImageView) convertView.findViewById(R.id.kids_cafe_mainImg);
-        RatingBar ratingBar = (RatingBar) convertView.findViewById(R.id.kids_cafe_ratingbar);
-
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
-        KidsCafeListItem listViewItem = listViewItemList.get(position);
+        MuseumArtListItem listViewItem = listViewItemList.get(position);
 
         // 아이템 내 각 위젯에 데이터 반영
         nameTextView.setText(listViewItem.getName());
-        mainImg.setImageBitmap(listViewItem.getBitmap());
-        ratingBar.setRating(listViewItem.getRate());
 
         return convertView;
     }
@@ -63,12 +56,10 @@ public class KidsCafeListAdapter extends BaseAdapter {
         return listViewItemList.get(position) ;
     }
 
-    public void addItem(String name, float rate, Bitmap bitmap) {
-        KidsCafeListItem item = new KidsCafeListItem();
+    public void addItem(String name) {
+        MuseumArtListItem item = new MuseumArtListItem();
 
         item.setName(name);
-        item.setRate(rate);
-        item.setBitmap(bitmap);
 
         listViewItemList.add(item);
     }
