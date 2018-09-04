@@ -13,10 +13,13 @@ public class MainActivity extends AppCompatActivity {
     private AirQualityButtonTypeA typeAbtn;
     private String openApiKey = "4852536450646c6738336c4e7a7a50";
     private ImageView kidsCafe, museum_art;
+    private String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        id = getIntent().getStringExtra("id");
 
         typeAbtn = (AirQualityButtonTypeA )findViewById(R.id.typeAbtn);
         typeAbtn.setOpenAPIKey(openApiKey);
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), KidsCafeActivity.class);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MuseumArtActivity.class);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });

@@ -27,6 +27,7 @@ import butterknife.ButterKnife;
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
+    private String email;
 
     @BindView(R.id.input_email)
     EditText _emailText;
@@ -89,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setMessage("진행중...");
         progressDialog.show();
 
-        String email = _emailText.getText().toString();
+        email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
         // TODO: Implement your own authentication logic here.
@@ -170,6 +171,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtra("id", email);
         startActivity(intent);
         finish();
     }

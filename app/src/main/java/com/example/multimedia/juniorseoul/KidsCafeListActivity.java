@@ -57,8 +57,8 @@ public class KidsCafeListActivity extends AppCompatActivity {
         progressDialog.show();
 
         Intent intent = getIntent();
-        String state = intent.getStringExtra("regionName");
-
+        String state = intent.getStringExtra("state");
+        String id = intent.getStringExtra("id");
 
     }
     private void setKidsCafeListAPI(String state){
@@ -83,9 +83,9 @@ public class KidsCafeListActivity extends AppCompatActivity {
                         Log.d("rating", String.valueOf(cafeList.get(count).getRating()));
                         Log.d("image_url", String.valueOf(cafeList.get(count).getImage_url()));
 
-                       list.add(new KidsCafeListItem(cafeList.get(count).getName(), (float)cafeList.get(count).getRating()));
-                       cafeList.get(count).setImage_url(cafeList.get(count).getImage_url().replace("JPG", "jpg"));
-                       test.add(KIDS_CAFE_URL+cafeList.get(count).getImage_url());
+                        list.add(new KidsCafeListItem(cafeList.get(count).getName(), (float)cafeList.get(count).getRating()));
+                        cafeList.get(count).setImage_url(cafeList.get(count).getImage_url().replace("JPG", "jpg"));
+                        test.add(KIDS_CAFE_URL+cafeList.get(count).getImage_url());
 
                         Thread mThread = new Thread(){
                             @Override
@@ -121,8 +121,6 @@ public class KidsCafeListActivity extends AppCompatActivity {
                         }
 
                     }
-
-
 
                     listview = (ListView)findViewById(R.id.kids_cafe_listview);
 
