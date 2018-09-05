@@ -29,12 +29,14 @@
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/kangdong"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@mipmap/ic_launcher"
+                android:onClick="onButtonClick"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/kangbuk"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
 
         </LinearLayout>
@@ -49,18 +51,21 @@
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/kangseo"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/kwanak"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/kwangjin"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
 
         </LinearLayout>
@@ -75,18 +80,21 @@
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/kuro"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/keumcheon"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/nowon"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
 
         </LinearLayout>
@@ -101,18 +109,21 @@
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/dobong"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/dongdaemun"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/dongjak"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
 
         </LinearLayout>
@@ -127,18 +138,21 @@
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/mapo"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/seodaemun"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/seocho"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
 
         </LinearLayout>
@@ -153,18 +167,21 @@
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/sungdong"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/sungbuk"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/songpa"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
 
         </LinearLayout>
@@ -179,18 +196,21 @@
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/yangcheon"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/youngdeungpo"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/yongsan"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
 
         </LinearLayout>
@@ -205,18 +225,21 @@
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/eunpyung"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/joong"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/joonglang"
+                android:onClick="onButtonClick"
                 android:src="@mipmap/ic_launcher"/>
 
         </LinearLayout>

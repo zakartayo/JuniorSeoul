@@ -3,12 +3,13 @@
     package="com.example.multimedia.juniorseoul">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <meta-data
         android:name="com.kakao.sdk.AppKey"
-        android:value="1e10c6bb9dc91481b02f90ccc00f2e21" />
-    '
+        android:value="364196f96611afc8f7d2088ba7f40c0b" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

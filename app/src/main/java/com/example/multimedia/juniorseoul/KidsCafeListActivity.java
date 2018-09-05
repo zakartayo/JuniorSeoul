@@ -44,21 +44,26 @@ public class KidsCafeListActivity extends AppCompatActivity {
     private static final String KIDS_CAFE_URL = "http://218.148.183.226:20000";
     private int count;
     private ProgressDialog progressDialog;
+    private String id, origin_state;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kid_cafe_list);
 
-        setKidsCafeListAPI("A");
+        Intent intent = getIntent();
+
+        origin_state = intent.getStringExtra("state");
+        id = intent.getStringExtra("id");
+
+        setKidsCafeListAPI(origin_state);
         progressDialog = new ProgressDialog(KidsCafeListActivity.this,
                 R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("진행중...");
         progressDialog.show();
 
-        Intent intent = getIntent();
-        String state = intent.getStringExtra("state");
-        String id = intent.getStringExtra("id");
+
 
     }
     private void setKidsCafeListAPI(String state){
@@ -83,8 +88,7 @@ public class KidsCafeListActivity extends AppCompatActivity {
                         Log.d("rating", String.valueOf(cafeList.get(count).getRating()));
                         Log.d("image_url", String.valueOf(cafeList.get(count).getImage_url()));
 
-                        list.add(new KidsCafeListItem(cafeList.get(count).getName(), (float)cafeList.get(count).getRating()));
-                        cafeList.get(count).setImage_url(cafeList.get(count).getImage_url().replace("JPG", "jpg"));
+                        list.add(new KidsCafeListItem(cafeList.get(count).getName(), cafeList.get(count).getAddress(), (float)cafeList.get(count).getRating()));
                         test.add(KIDS_CAFE_URL+cafeList.get(count).getImage_url());
 
                         Thread mThread = new Thread(){
@@ -123,19 +127,31 @@ public class KidsCafeListActivity extends AppCompatActivity {
                     }
 
                     listview = (ListView)findViewById(R.id.kids_cafe_listview);
+                    listview.setFocusable(true);
 
                     adapter = new KidsCafeListAdapter();
 
                     listview.setAdapter(adapter);
 
                     for(int i=0; i<list.size(); i++){
-                        adapter.addItem(list.get(i).getName(), list.get(i).getRate(), list.get(i).getBitmap());
+                        adapter.addItem(list.get(i).getName(), list.get(i).getAddress(),list.get(i).getRate(), list.get(i).getBitmap());
                     }
 
                     listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                            Intent detailItent = new Intent(getApplicationContext(), KidsCafeDetailActivity.class);
 
+                            Log.d("position", Integer.toString(position));
+                            detailItent.putExtra("id", id);
+                            detailItent.putExtra("state", origin_state);
+                            detailItent.putExtra("name", cafeList.get(position).getName());
+                            detailItent.putExtra("address", cafeList.get(position).getAddress());
+                            detailItent.putExtra("phoneNum", cafeList.get(position).getTel());
+                            detailItent.putExtra("latitude", Double.parseDouble(cafeList.get(position).getLatitude()));
+                            detailItent.putExtra("longitude", Double.parseDouble(cafeList.get(position).getLongitude()));
+
+                            startActivity(detailItent);
                         }
                     });
                     progressDialog.dismiss();
@@ -148,7 +164,8 @@ public class KidsCafeListActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<KidsCafe> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"onFailure", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"서버가 꺼져있습니다", Toast.LENGTH_LONG).show();
+                finish();
             }
         });
     }

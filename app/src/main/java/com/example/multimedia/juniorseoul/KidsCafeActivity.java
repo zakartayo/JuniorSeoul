@@ -35,30 +35,6 @@ public class KidsCafeActivity extends AppCompatActivity {
 
         id = getIntent().getStringExtra("id");
 
-        kangnam = (ImageView)findViewById(R.id.kangnam);
-        kangdong = (ImageView)findViewById(R.id.kangdong);
-        kangbuk = (ImageView)findViewById(R.id.kangbuk);
-        kwanak = (ImageView)findViewById(R.id.kwanak);
-        kwangjin = (ImageView)findViewById(R.id.kwangjin);
-        kuro = (ImageView)findViewById(R.id.kuro);
-        keumcheon = (ImageView)findViewById(R.id.keumcheon);
-        nowon = (ImageView)findViewById(R.id.nowon);
-        dobong = (ImageView)findViewById(R.id.dobong);
-        dongdaemun = (ImageView)findViewById(R.id.dongdaemun);
-        dongjak = (ImageView)findViewById(R.id.dongjak);
-        mapo = (ImageView)findViewById(R.id.mapo);
-        seodaemun = (ImageView)findViewById(R.id.seodaemun);
-        seocho = (ImageView)findViewById(R.id.seocho);
-        sungdong = (ImageView)findViewById(R.id.sungdong);
-        sungbuk = (ImageView)findViewById(R.id.sungbuk);
-        songpa = (ImageView)findViewById(R.id.songpa);
-        yangcheon = (ImageView)findViewById(R.id.yangcheon);
-        youngdeungpo = (ImageView)findViewById(R.id.youngdeungpo);
-        yongsan = (ImageView)findViewById(R.id.yongsan);
-        eunpyung = (ImageView)findViewById(R.id.eunpyung);
-        joong = (ImageView)findViewById(R.id.joong);
-        joonglang = (ImageView)findViewById(R.id.joonglang);
-
 
     }
 

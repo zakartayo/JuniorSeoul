@@ -37,7 +37,8 @@ public class KidsCafeListAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.kids_cafe_list_item, parent, false);
         }
 
-        TextView nameTextView = (TextView) convertView.findViewById(R.id.kids_cafe_list_name) ;
+        TextView nameTextView = (TextView) convertView.findViewById(R.id.kids_cafe_list_name);
+        TextView addressTextView = (TextView) convertView.findViewById(R.id.kids_cafe_list_state);
         ImageView mainImg = (ImageView) convertView.findViewById(R.id.kids_cafe_mainImg);
         RatingBar ratingBar = (RatingBar) convertView.findViewById(R.id.kids_cafe_ratingbar);
 
@@ -47,6 +48,7 @@ public class KidsCafeListAdapter extends BaseAdapter {
 
         // 아이템 내 각 위젯에 데이터 반영
         nameTextView.setText(listViewItem.getName());
+        addressTextView.setText(listViewItem.getAddress());
         mainImg.setImageBitmap(listViewItem.getBitmap());
         ratingBar.setRating(listViewItem.getRate());
 
@@ -63,10 +65,11 @@ public class KidsCafeListAdapter extends BaseAdapter {
         return listViewItemList.get(position) ;
     }
 
-    public void addItem(String name, float rate, Bitmap bitmap) {
+    public void addItem(String name, String address, float rate, Bitmap bitmap) {
         KidsCafeListItem item = new KidsCafeListItem();
 
         item.setName(name);
+        item.setAddress(address);
         item.setRate(rate);
         item.setBitmap(bitmap);
 
