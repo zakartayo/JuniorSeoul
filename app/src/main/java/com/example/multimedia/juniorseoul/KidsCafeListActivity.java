@@ -16,9 +16,7 @@ import com.example.multimedia.juniorseoul.Adapter.KidsCafeListAdapter;
 import com.example.multimedia.juniorseoul.Classess.CafeList;
 import com.example.multimedia.juniorseoul.Classess.KidsCafe;
 import com.example.multimedia.juniorseoul.Classess.KidsCafeListItem;
-import com.example.multimedia.juniorseoul.Classess.KidsCafeModel;
 import com.example.multimedia.juniorseoul.Classess.ServiceGenerator;
-import com.example.multimedia.juniorseoul.DataHouse.StaticData;
 import com.example.multimedia.juniorseoul.Interface.KidsCafeListApiService;
 
 import java.io.IOException;
@@ -87,6 +85,7 @@ public class KidsCafeListActivity extends AppCompatActivity {
                         Log.d("tell", cafeList.get(count).getTel());
                         Log.d("rating", String.valueOf(cafeList.get(count).getRating()));
                         Log.d("image_url", String.valueOf(cafeList.get(count).getImage_url()));
+                        Log.d("kids_id", String.valueOf(cafeList.get(count).getKids_id()));
 
                         list.add(new KidsCafeListItem(cafeList.get(count).getName(), cafeList.get(count).getAddress(), (float)cafeList.get(count).getRating()));
                         test.add(KIDS_CAFE_URL+cafeList.get(count).getImage_url());
@@ -150,6 +149,7 @@ public class KidsCafeListActivity extends AppCompatActivity {
                             detailItent.putExtra("phoneNum", cafeList.get(position).getTel());
                             detailItent.putExtra("latitude", Double.parseDouble(cafeList.get(position).getLatitude()));
                             detailItent.putExtra("longitude", Double.parseDouble(cafeList.get(position).getLongitude()));
+                            detailItent.putExtra("kids_id", cafeList.get(position).getKids_id());
 
                             startActivity(detailItent);
                         }

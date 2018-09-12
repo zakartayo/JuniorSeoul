@@ -33,6 +33,10 @@ public class CafeList {
     @Expose
     private String image_url;
 
+    @SerializedName("KIDS_ID")
+    @Expose
+    private int kids_id;
+
     public String getImage_url() {
         return image_url;
     }
@@ -40,8 +44,6 @@ public class CafeList {
     public void setImage_url(String image_url) {
         this.image_url = image_url;
     }
-
-
 
     public String getLongitude() {
         return longitude;
@@ -91,5 +93,12 @@ public class CafeList {
         this.rating = rating;
     }
 
+    public int getKids_id() {
+        return kids_id;
+    }
+
+    public void setKids_id(int kids_id) {
+        this.kids_id = kids_id;
+    }
 
 }
