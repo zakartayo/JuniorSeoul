@@ -20,9 +20,12 @@ import android.widget.Toast;
 import com.example.multimedia.juniorseoul.Adapter.PagerAdapter;
 import com.example.multimedia.juniorseoul.Classess.ImageList;
 import com.example.multimedia.juniorseoul.Classess.KidsCafeImage;
+import com.example.multimedia.juniorseoul.Classess.KidsCafeReply;
 import com.example.multimedia.juniorseoul.Classess.ParcelBitmapList;
+import com.example.multimedia.juniorseoul.Classess.ReplyList;
 import com.example.multimedia.juniorseoul.Classess.ServiceGenerator;
 import com.example.multimedia.juniorseoul.Interface.KidsCafeImageApiService;
+import com.example.multimedia.juniorseoul.Interface.KidsCafeReplyApiService;
 
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
@@ -48,13 +51,13 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
     private TextView nameTv, addressTv, phoneNumTv;
     private String id, state;
     private ArrayList<ImageList> imageList;
+    private ArrayList<ReplyList> replyList;
     private static final String KIDS_CAFE_URL = "http://218.148.183.226:20000";
     private int count;
     private ArrayList<String> url_data;
     private ParcelBitmapList list;
     private TabLayout tabLayout;
     private ArrayList<String> info;
-    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,13 +133,7 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
         return null;
     }
 
-    private void setKidsCafeImageListAPI(String state, int kids_id){
-
-        progressDialog = new ProgressDialog(KidsCafeDetailActivity.this,
-                R.style.AppTheme_Dark_Dialog);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("진행중...");
-        progressDialog.show();
+    public void setKidsCafeImageListAPI(final String state, final int kids_id){
 
         KidsCafeImageApiService api = ServiceGenerator.getImageApiService();
 
@@ -197,11 +194,39 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
                 else{
                     Toast.makeText(getApplicationContext(),"response fail", Toast.LENGTH_SHORT).show();
                 }
+
+                setKidsCafeReplyListAPI(state, kids_id);
+            }
+
+            @Override
+            public void onFailure(Call<KidsCafeImage> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),"서버가 꺼져있습니다", Toast.LENGTH_LONG).show();
+                finish();
+            }
+        });
+    }
+
+    public void setKidsCafeReplyListAPI(String state, int kids_id){
+
+        KidsCafeReplyApiService replyApi = ServiceGenerator.getReplyApiService();
+        Call<KidsCafeReply> replyCall = replyApi.getReplyApiService(state, kids_id);
+
+        replyCall.enqueue(new Callback<KidsCafeReply>() {
+            @Override
+            public void onResponse(Call<KidsCafeReply> call, Response<KidsCafeReply> response) {
+
+                if(response.isSuccessful()){
+                    replyList = response.body().getReplyList();
+                }
+
+                else{
+                    Toast.makeText(getApplicationContext(),"response fail", Toast.LENGTH_SHORT).show();
+                }
+
                 final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
                 final PagerAdapter adapter = new PagerAdapter
-                        (getSupportFragmentManager(), tabLayout.getTabCount(), info, list);
+                        (getSupportFragmentManager(), tabLayout.getTabCount(), info, list, replyList);
                 Log.d("pager 호출", "pager 호출");
-                progressDialog.dismiss();
                 viewPager.setAdapter(adapter);
                 viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
                 tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -221,11 +246,10 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
                     }
                 });
 
-
             }
 
             @Override
-            public void onFailure(Call<KidsCafeImage> call, Throwable t) {
+            public void onFailure(Call<KidsCafeReply> call, Throwable t) {
                 Toast.makeText(getApplicationContext(),"서버가 꺼져있습니다", Toast.LENGTH_LONG).show();
                 finish();
             }

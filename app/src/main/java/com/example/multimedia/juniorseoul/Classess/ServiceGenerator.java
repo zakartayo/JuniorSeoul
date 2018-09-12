@@ -2,6 +2,7 @@ package com.example.multimedia.juniorseoul.Classess;
 
 import com.example.multimedia.juniorseoul.Interface.KidsCafeImageApiService;
 import com.example.multimedia.juniorseoul.Interface.KidsCafeListApiService;
+import com.example.multimedia.juniorseoul.Interface.KidsCafeReplyApiService;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -23,11 +24,22 @@ public class ServiceGenerator {
                 .build();
     }
 
+    private static Retrofit getKidsCafeReplyInstance(){
+        return new Retrofit.Builder()
+                .baseUrl(KIDS_CAFE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
     public static KidsCafeListApiService getListApiService(){
         return getKidsCafeListInstance().create(KidsCafeListApiService.class);
     }
 
     public static KidsCafeImageApiService getImageApiService(){
         return getKidsCafeImageInstance().create(KidsCafeImageApiService.class);
+    }
+
+    public static KidsCafeReplyApiService getReplyApiService(){
+        return getKidsCafeReplyInstance().create(KidsCafeReplyApiService.class);
     }
 }

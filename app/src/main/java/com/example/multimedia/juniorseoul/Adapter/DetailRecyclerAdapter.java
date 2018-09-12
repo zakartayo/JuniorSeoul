@@ -1,5 +1,8 @@
 package com.example.multimedia.juniorseoul.Adapter;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,15 +10,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.multimedia.juniorseoul.Classess.ParcelBitmapList;
+import com.example.multimedia.juniorseoul.KidsCafeImageActivity;
 import com.example.multimedia.juniorseoul.R;
+
+import java.io.ByteArrayOutputStream;
 
 public class DetailRecyclerAdapter extends RecyclerView.Adapter<DetailRecyclerAdapter.ItemViewHolder> {
     ParcelBitmapList mItems;
     int size;
+    Context context;
 
-public DetailRecyclerAdapter(ParcelBitmapList items, int size){
+public DetailRecyclerAdapter(ParcelBitmapList items, int size, Context context){
         mItems = items;
         this.size = size;
+        this.context = context;
     }
 
 
@@ -29,8 +37,21 @@ public DetailRecyclerAdapter(ParcelBitmapList items, int size){
 
 // View 의 내용을 해당 포지션의 데이터로 바꿉니다.
     @Override
-    public void onBindViewHolder(ItemViewHolder holder, int position) {
+    public void onBindViewHolder(ItemViewHolder holder, final int position) {
         holder.imageView.setImageBitmap(mItems.getBitmap(position));
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, KidsCafeImageActivity.class);
+
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                mItems.get(position).getBitmap().compress(Bitmap.CompressFormat.JPEG, 50 , stream);
+                byte[] bytes = stream.toByteArray();
+                intent.putExtra("bitmap", bytes);
+
+                context.startActivity(intent);
+            }
+        });
     }
 
 // 데이터 셋의 크기를 리턴해줍니다.

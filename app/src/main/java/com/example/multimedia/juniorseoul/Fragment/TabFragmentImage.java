@@ -39,7 +39,7 @@ public class TabFragmentImage extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.image_recyclerview);
         recyclerView.setHasFixedSize(true);
 
-        DetailRecyclerAdapter adapter = new DetailRecyclerAdapter(list, size);
+        DetailRecyclerAdapter adapter = new DetailRecyclerAdapter(list, size, getActivity());
 
         mLayoutManager = new LinearLayoutManager(getActivity());
         mLayoutManager.setOrientation(LinearLayout.HORIZONTAL);
