@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -53,17 +54,21 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
     private ArrayList<ImageList> imageList;
     private ArrayList<ReplyList> replyList;
     private static final String KIDS_CAFE_URL = "http://218.148.183.226:20000";
-    private int count;
+    private int count, kids_id;
     private ArrayList<String> url_data;
     private ParcelBitmapList list;
     private TabLayout tabLayout;
     private ArrayList<String> info;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kids_cafe_detail);
 
-        getKeyHash(this);
+
+
+        //getKeyHash(this);
+
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
         state = intent.getStringExtra("state");
@@ -72,7 +77,7 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
         String phoneNum = intent.getStringExtra("phoneNum");
         double latitude = intent.getDoubleExtra("latitude", 0.0);
         double longitude = intent.getDoubleExtra("longitude", 0.0);
-        int kids_id = intent.getIntExtra("kids_id", 0);
+        kids_id = intent.getIntExtra("kids_id", 0);
 
         Log.d("latitude test", Double.toString(latitude));
         Log.d("kids_id test", Integer.toString(kids_id));
@@ -83,9 +88,61 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
         info.add(address);
         info.add(phoneNum);
 
-        setKidsCafeImageListAPI(state, kids_id);
 
         showMap(name, latitude, longitude);
+
+        progressDialog = new ProgressDialog(KidsCafeDetailActivity.this,
+                R.style.AppTheme_Dark_Dialog);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("진행중...");
+        progressDialog.show();
+
+        Handler delayHandler1 = new Handler();
+        delayHandler1.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setKidsCafeReplyListAPI(state, kids_id);
+            }
+        }, 1800);
+
+        Handler delayHandler3 = new Handler();
+        delayHandler3.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setKidsCafeImageListAPI(state, kids_id);
+            }
+        }, 800);
+
+
+        Handler delayHandler2 = new Handler();
+        delayHandler2.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+                final PagerAdapter adapter = new PagerAdapter
+                        (getSupportFragmentManager(), tabLayout.getTabCount(), info, list, replyList);
+                Log.d("pager 호출", "pager 호출");
+                viewPager.setAdapter(adapter);
+                viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+                tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                    @Override
+                    public void onTabSelected(TabLayout.Tab tab) {
+                        viewPager.setCurrentItem(tab.getPosition());
+                    }
+
+                    @Override
+                    public void onTabUnselected(TabLayout.Tab tab) {
+
+                    }
+
+                    @Override
+                    public void onTabReselected(TabLayout.Tab tab) {
+
+                    }
+                });
+                progressDialog.dismiss();
+            }
+        }, 3000);
 
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("정보"));
@@ -101,7 +158,7 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
         RelativeLayout container = (RelativeLayout) findViewById(R.id.map_view);
 
         mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(latitude, longitude), true);
-        mapView.setZoomLevel(2, true);
+        mapView.setZoomLevel(3, true);
 
         MapPOIItem marker = new MapPOIItem();
         marker.setItemName(name);
@@ -195,7 +252,6 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"response fail", Toast.LENGTH_SHORT).show();
                 }
 
-                setKidsCafeReplyListAPI(state, kids_id);
             }
 
             @Override
@@ -222,30 +278,6 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
                 else{
                     Toast.makeText(getApplicationContext(),"response fail", Toast.LENGTH_SHORT).show();
                 }
-
-                final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-                final PagerAdapter adapter = new PagerAdapter
-                        (getSupportFragmentManager(), tabLayout.getTabCount(), info, list, replyList);
-                Log.d("pager 호출", "pager 호출");
-                viewPager.setAdapter(adapter);
-                viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-                tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-                    @Override
-                    public void onTabSelected(TabLayout.Tab tab) {
-                        viewPager.setCurrentItem(tab.getPosition());
-                    }
-
-                    @Override
-                    public void onTabUnselected(TabLayout.Tab tab) {
-
-                    }
-
-                    @Override
-                    public void onTabReselected(TabLayout.Tab tab) {
-
-                    }
-                });
-
             }
 
             @Override

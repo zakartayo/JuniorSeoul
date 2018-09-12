@@ -19,22 +19,32 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:largeHeap="true">
-        <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".KidsCafeActivity" />
-        <activity android:name=".KidsCafeDetailActivity" />
-        <activity android:name=".KidsCafeListActivity" />
-        <activity android:name=".MuseumArtActivity" />
-        <activity android:name=".MuseumArtListActivity" />
-        <activity android:name=".MuseumArtDetailActivity" />
-        <activity android:name=".KidsCafeImageActivity"></activity>
+        <activity android:name=".SignUpActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".KidsCafeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".KidsCafeDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".KidsCafeListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MuseumArtActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MuseumArtListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MuseumArtDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".KidsCafeImageActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
