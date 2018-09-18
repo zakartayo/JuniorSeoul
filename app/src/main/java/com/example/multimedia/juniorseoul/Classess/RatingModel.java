@@ -3,12 +3,9 @@ package com.example.multimedia.juniorseoul.Classess;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ReplyResultModel {
-
+public class RatingModel {
     private boolean result;
 
-    @SerializedName("CODE")
-    @Expose
     private String message;
 
     public boolean isResult() {

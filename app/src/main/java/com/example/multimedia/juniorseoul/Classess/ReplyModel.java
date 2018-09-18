@@ -9,6 +9,7 @@ public class ReplyModel {
         this.id = id;
         this.content = content;
         this.date = date;
+
     }
 
     public String getId() {
@@ -34,4 +35,5 @@ public class ReplyModel {
     public void setDate(String date) {
         this.date = date;
     }
+
 }

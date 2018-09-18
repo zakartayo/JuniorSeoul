@@ -51,11 +51,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:isIndicator="false"
+            android:isIndicator="true"
             android:max="5"
             android:numStars="5"
             android:rating="3"
             android:stepSize="0.5"
+            android:clickable="false"
             android:focusableInTouchMode="false"
             android:focusable="false"/>
     </LinearLayout>

@@ -10,6 +10,18 @@ public class KidsCafeReply {
     @Expose
     private ArrayList<ReplyList> replyList = null;
 
+    @SerializedName("FLAG")
+    @Expose
+    private boolean flag;
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
     public ArrayList<ReplyList> getReplyList() {
         return replyList;
     }

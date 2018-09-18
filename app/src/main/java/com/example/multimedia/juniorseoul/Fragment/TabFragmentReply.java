@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -31,6 +33,8 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class TabFragmentReply  extends Fragment {
     private ListView listView;
     private ReplyListAdapter adapter;
+    private int kids_id;
+    private String user_id;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -39,6 +43,8 @@ public class TabFragmentReply  extends Fragment {
         ArrayList<String> replyIdList = getArguments().getStringArrayList("replyIdList");
         ArrayList<String> replyContentList = getArguments().getStringArrayList("replyContentList");
         ArrayList<String> replyDateList = getArguments().getStringArrayList("replyDateList");
+        kids_id = getArguments().getInt("kids_id");
+        user_id = getArguments().getString("user_id");
 
         listView = (ListView)view.findViewById(R.id.reply_listview);
         adapter = new ReplyListAdapter();
@@ -65,15 +71,15 @@ public class TabFragmentReply  extends Fragment {
                 ReplyPoint replyPoint = retrofit.create(ReplyPoint.class);
                 try {
                     JSONObject paramObject = new JSONObject();
-                    paramObject.put("kid_id", "A");
-                    paramObject.put("user_id", "aaaa@aaa.aaa");
-                    paramObject.put("comments", "안해");
+                    paramObject.put("kid_id", kids_id);
+                    paramObject.put("user_id", user_id);
+                    paramObject.put("comments", edit.getText().toString());
 
                     Call<ReplyResultModel> userCall = replyPoint.do_send_reply(paramObject.toString());
                     userCall.enqueue(new Callback<ReplyResultModel>() {
                         @Override
                         public void onResponse(Call<ReplyResultModel> call, Response<ReplyResultModel> response) {
-
+                            Log.d("responsebody", response.body().getMessage());
                         }
 
                         @Override
@@ -84,6 +90,11 @@ public class TabFragmentReply  extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(edit.getWindowToken(), 0);
+                edit.setText("");
+                edit.clearFocus();
+
             }
         });
 

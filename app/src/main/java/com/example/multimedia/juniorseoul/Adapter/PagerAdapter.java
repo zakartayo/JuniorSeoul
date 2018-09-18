@@ -20,13 +20,17 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     ParcelBitmapList list = new ParcelBitmapList();
     ArrayList<ReplyList> replyList = null;
     ArrayList<String> replyIdList, replyContentList, replyDateList;
+    int kids_id;
+    String user_id;
 
-    public PagerAdapter(FragmentManager fm, int NumOfTabs, ArrayList<String> info, ParcelBitmapList list, ArrayList<ReplyList> replyList) {
+    public PagerAdapter(FragmentManager fm, int NumOfTabs, ArrayList<String> info, ParcelBitmapList list, ArrayList<ReplyList> replyList, int kids_id, String user_id) {
         super(fm);
         this.mNumOfTabs = NumOfTabs;
         this.info = info;
         this.list = list;
         this.replyList = replyList;
+        this.kids_id = kids_id;
+        this.user_id = user_id;
 
         replyIdList = new ArrayList<String>();
         replyContentList = new ArrayList<String>();
@@ -61,10 +65,13 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                 return tab2;
             case 2:
                 TabFragmentReply tab3 = new TabFragmentReply();
-                Bundle bundle2 = new Bundle(3);
+                Bundle bundle2 = new Bundle(5);
                 bundle2.putStringArrayList("replyIdList", replyIdList);
                 bundle2.putStringArrayList("replyContentList", replyContentList);
                 bundle2.putStringArrayList("replyDateList", replyDateList);
+                bundle2.putInt("kids_id", kids_id);
+                bundle2.putString("user_id", user_id);
+
 
                 tab3.setArguments(bundle2);
                 return tab3;
