@@ -14,6 +14,18 @@ public class KidsCafeReply {
     @Expose
     private boolean flag;
 
+    @SerializedName("RATING")
+    @Expose
+    private double rating;
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
     public boolean isFlag() {
         return flag;
     }

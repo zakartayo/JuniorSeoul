@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -73,15 +74,22 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ArrayList<String> info;
     private ProgressDialog progressDialog;
-    private RatingBar ratingBar;
+    private RatingBar ratingBar, yratingBar;
     private Button rating_send_btn;
+    private FrameLayout yFrameLayout, nFrameLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kids_cafe_detail);
 
-        ratingBar = (RatingBar)findViewById(R.id.kids_cafe_detail_ratingbar);
-        rating_send_btn = (Button)findViewById(R.id.rating_send_btn);
+        ratingBar = (RatingBar) findViewById(R.id.kids_cafe_detail_ratingbar);
+        yratingBar = (RatingBar)findViewById(R.id.ykids_cafe_detail_ratingbar);
+        rating_send_btn = (Button) findViewById(R.id.nrating_send_btn);
+        yFrameLayout = (FrameLayout) findViewById(R.id.yFrameLayout);
+        nFrameLayout = (FrameLayout) findViewById(R.id.nFrameLayout);
+
+        yFrameLayout.setVisibility(View.GONE);
+        nFrameLayout.setVisibility(View.GONE);
 
         //getKeyHash(this);
 
@@ -201,6 +209,10 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                Toast.makeText(getApplicationContext(), "별점이 기록되었습니다", Toast.LENGTH_LONG).show();
+                nFrameLayout.setVisibility(View.GONE);
+                yFrameLayout.setVisibility(View.VISIBLE);
+                yratingBar.setRating(ratingBar.getRating());
             }
         });
 
@@ -329,9 +341,31 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
                     replyList = response.body().getReplyList();
                     boolean flag = response.body().isFlag();
                     if(flag==true){
+
                         Log.d("flag", "있음");
+                        float rating = (float)response.body().getRating();
+
+                        yratingBar.setRating(rating);
+                        yratingBar.setIsIndicator(true);
+
+                        Log.d("hasrating", String.valueOf(rating));
+
+                        yFrameLayout.setVisibility(View.VISIBLE);
+
+                        Button fixBtn = (Button)findViewById(R.id.yrating_send_btn);
+
+                        fixBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                nFrameLayout.setVisibility(View.VISIBLE);
+                                yFrameLayout.setVisibility(View.GONE);
+                            }
+                        });
+
                     }else{
                         Log.d("flag", "없음");
+                        nFrameLayout.setVisibility(View.VISIBLE);
+
                     }
                 }
 
