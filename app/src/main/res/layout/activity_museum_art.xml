@@ -13,29 +13,25 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="105dp"
+        android:layout_marginTop="158dp"
         app:srcCompat="@mipmap/ic_launcher_round" />
 
     <ImageView
         android:id="@+id/artIv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/memorialIv"
+        android:layout_marginBottom="178dp"
         android:layout_marginStart="72dp"
-        android:layout_marginLeft="72dp"
         app:srcCompat="@mipmap/ic_launcher_round" />
 
     <ImageView
         android:id="@+id/memorialIv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="157dp"
+        android:layout_alignTop="@+id/artIv"
         android:layout_marginEnd="72dp"
-        android:layout_marginRight="72dp"
         app:srcCompat="@mipmap/ic_launcher_round" />
 </RelativeLayout>
