@@ -3,6 +3,7 @@ package com.example.multimedia.juniorseoul.Classess;
 import com.example.multimedia.juniorseoul.Interface.KidsCafeImageApiService;
 import com.example.multimedia.juniorseoul.Interface.KidsCafeListApiService;
 import com.example.multimedia.juniorseoul.Interface.KidsCafeReplyApiService;
+import com.example.multimedia.juniorseoul.Interface.MuseumArtApiService;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -31,6 +32,13 @@ public class ServiceGenerator {
                 .build();
     }
 
+    private static Retrofit getMuseumArtInstance(){
+        return new Retrofit.Builder()
+                .baseUrl(KIDS_CAFE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
     public static KidsCafeListApiService getListApiService(){
         return getKidsCafeListInstance().create(KidsCafeListApiService.class);
     }
@@ -41,5 +49,8 @@ public class ServiceGenerator {
 
     public static KidsCafeReplyApiService getReplyApiService(){
         return getKidsCafeReplyInstance().create(KidsCafeReplyApiService.class);
+    }
+    public static MuseumArtApiService getMuseumArtApiService(){
+        return getMuseumArtInstance().create(MuseumArtApiService.class);
     }
 }

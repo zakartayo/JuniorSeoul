@@ -14,10 +14,9 @@ import net.daum.mf.map.api.MapView;
 
 public class MuseumArtDetailActivity extends AppCompatActivity {
 
-    private String name, address, phone_num, administration, website;
-    private int adult_price, juvenile_price, kid_price;
+    private String name, address, oper_tel, oper_name, oper_page, adult_pay, teenager_pay, child_pay;
     private double latitude, longitude;
-    private boolean caseByCase;
+    private boolean caseByCase=false;
     private TextView nameTv, addressTv, phoneNumTv,  adminTv,  websiteTv,  adultTv,  juvenileTv,  kidTv;
     private MapView mapView;
 
@@ -28,31 +27,21 @@ public class MuseumArtDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        name = intent.getStringExtra("name");
         address = intent.getStringExtra("address");
-        phone_num = intent.getStringExtra("phoneNum");
-        administration = intent.getStringExtra("administration");
-        website = intent.getStringExtra("webSite");
-        caseByCase = intent.getBooleanExtra("caseByCase", false);
-        adult_price = intent.getIntExtra("adultPrice", -1);
-        juvenile_price = intent.getIntExtra("juvenilePrice", -1);
-        kid_price = intent.getIntExtra("kidPrice", -1);
+        oper_tel = intent.getStringExtra("oper_tel");
+        name = intent.getStringExtra("name");
+        oper_page = intent.getStringExtra("oper_page");
+        oper_name = intent.getStringExtra("oper_name");
+        child_pay = intent.getStringExtra("child_pay");
+        teenager_pay = intent.getStringExtra("teenager_pay");
+        adult_pay = intent.getStringExtra("adult_pay");
         latitude = intent.getDoubleExtra("latitude", 0.0);
         longitude = intent.getDoubleExtra("longitude", 0.0);
 
-        nameTv = (TextView)findViewById(R.id.name);
-        addressTv = (TextView)findViewById(R.id.address);
-        phoneNumTv = (TextView)findViewById(R.id.phone);
-        adminTv = (TextView)findViewById(R.id.administraion);
-        websiteTv = (TextView)findViewById(R.id.website);
-        adultTv = (TextView)findViewById(R.id.adult_price);
-        juvenileTv = (TextView)findViewById(R.id.juvenile_price);
-        kidTv = (TextView)findViewById(R.id.kid_price);
+        Log.d("total_datas", address+oper_tel+oper_name+oper_page+name+child_pay+adult_pay+teenager_pay+String.valueOf(latitude)+String.valueOf(longitude));
+
 
         if(caseByCase==false){
-            adultTv.setText("가격 미정");
-            juvenileTv.setVisibility(View.GONE);
-            kidTv.setVisibility(View.GONE);
 
             mapView = new MapView(this);
             mapView.setDaumMapApiKey("1e10c6bb9dc91481b02f90ccc00f2e21");
@@ -72,11 +61,6 @@ public class MuseumArtDetailActivity extends AppCompatActivity {
 
             container.addView(mapView);
 
-            nameTv.setText(name);
-            addressTv.setText(address);
-            phoneNumTv.setText(phone_num);
-            adminTv.setText(administration);
-            websiteTv.setText(website);
         }else{
             mapView = new MapView(this);
             mapView.setDaumMapApiKey("1e10c6bb9dc91481b02f90ccc00f2e21");
@@ -95,15 +79,7 @@ public class MuseumArtDetailActivity extends AppCompatActivity {
             mapView.addPOIItem(marker);
 
             container.addView(mapView);
-
-            nameTv.setText(name);
-            addressTv.setText(address);
-            phoneNumTv.setText(phone_num);
-            adminTv.setText(administration);
-            websiteTv.setText(website);
-            adultTv.setText(Integer.toString(adult_price));
-            juvenileTv.setText(Integer.toString(juvenile_price));
-            kidTv.setText(Integer.toString(kid_price));
+;
         }
     }
 }

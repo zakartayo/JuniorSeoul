@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.multimedia.juniorseoul.Classess.KidsCafeListItem;
@@ -32,16 +33,20 @@ public class MuseumArtListAdapter extends BaseAdapter {
         // "listview_item" Layout을 inflate하여 convertView 참조 획득.
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.kids_cafe_list_item, parent, false);
+            convertView = inflater.inflate(R.layout.museum_art_list_item, parent, false);
         }
 
-        TextView nameTextView = (TextView) convertView.findViewById(R.id.kids_cafe_list_name) ;
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.museum_art_img);
+        TextView nameTextView = (TextView) convertView.findViewById(R.id.museum_art_name) ;
+        TextView stateTextView = (TextView) convertView.findViewById(R.id.museum_art_state) ;
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         MuseumArtListItem listViewItem = listViewItemList.get(position);
 
         // 아이템 내 각 위젯에 데이터 반영
         nameTextView.setText(listViewItem.getName());
+        stateTextView.setText(listViewItem.getState());
+        imageView.setImageResource(listViewItem.getImg());
 
         return convertView;
     }
@@ -56,10 +61,8 @@ public class MuseumArtListAdapter extends BaseAdapter {
         return listViewItemList.get(position) ;
     }
 
-    public void addItem(String name) {
-        MuseumArtListItem item = new MuseumArtListItem();
-
-        item.setName(name);
+    public void addItem(String name, String state, int img) {
+        MuseumArtListItem item = new MuseumArtListItem(name, state, img);
 
         listViewItemList.add(item);
     }
