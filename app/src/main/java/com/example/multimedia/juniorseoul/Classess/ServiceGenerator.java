@@ -9,7 +9,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
-    private static final String KIDS_CAFE_URL = "http://218.148.183.226:20000/";
+    private static final String KIDS_CAFE_URL = "http://218.148.183.226:20000/kids_cafe/";
+    private static final String MUSEUM_ART_URL = "http://218.148.183.226:20000/";
 
     private static Retrofit getKidsCafeListInstance(){
         return new Retrofit.Builder()
@@ -34,7 +35,7 @@ public class ServiceGenerator {
 
     private static Retrofit getMuseumArtInstance(){
         return new Retrofit.Builder()
-                .baseUrl(KIDS_CAFE_URL)
+                .baseUrl(MUSEUM_ART_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
