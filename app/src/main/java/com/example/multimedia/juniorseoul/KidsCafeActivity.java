@@ -1,32 +1,12 @@
 package com.example.multimedia.juniorseoul;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-
-import net.daum.mf.map.api.MapPOIItem;
-import net.daum.mf.map.api.MapPoint;
-import net.daum.mf.map.api.MapView;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-import static com.kakao.util.maps.helper.Utility.getPackageInfo;
 
 public class KidsCafeActivity extends AppCompatActivity {
-    private ImageView kangnam, kangdong, kangbuk, kanagseo, kwanak,
-            kwangjin, kuro, keumcheon, nowon, dobong, dongdaemun,
-            dongjak, mapo, seodaemun, seocho, sungdong, sungbuk,
-            songpa, yangcheon, youngdeungpo, yongsan, eunpyung,
-            jongro, joong, joonglang;
     private String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

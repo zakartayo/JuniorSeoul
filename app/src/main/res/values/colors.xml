@@ -16,4 +16,5 @@
     <color name="iron">#CCCCCC</color>
     <color name="white">#FFFFFF</color>
     <color name="statecolor">#c018abf4</color>
+    <color name="indicator">#246383</color>
 </resources>

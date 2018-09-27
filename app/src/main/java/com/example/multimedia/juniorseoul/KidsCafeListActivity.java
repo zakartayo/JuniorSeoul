@@ -61,8 +61,6 @@ public class KidsCafeListActivity extends AppCompatActivity {
         progressDialog.setMessage("진행중...");
         progressDialog.show();
 
-
-
     }
     private void setKidsCafeListAPI(String state){
 

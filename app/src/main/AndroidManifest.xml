@@ -54,7 +54,23 @@
         <activity
             android:name=".KidsCafeImageActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".CulturalEventActivity"></activity>
+        <activity
+            android:name=".CulturalEventActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TnActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TreasureActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NationalTreasureActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TnListActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".TnDetailActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
