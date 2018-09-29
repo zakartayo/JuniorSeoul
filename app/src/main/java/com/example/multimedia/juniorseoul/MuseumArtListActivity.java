@@ -33,7 +33,7 @@ public class MuseumArtListActivity extends AppCompatActivity {
     private int which_data;
     private GridView listview;
     private MuseumArtListAdapter adapter;
-    private static final String KIDS_CAFE_URL = "http://218.148.183.226:20000";
+    private static final String KIDS_CAFE_URL = "http://54.180.82.151:20000";
     private int count;
     private ProgressDialog progressDialog;
     private ArrayList<MuseumArtMemorialList> museumArtMemorialList;

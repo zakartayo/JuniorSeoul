@@ -6,16 +6,28 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.multimedia.juniorseoul.Classess.NTinfo;
+import com.example.multimedia.juniorseoul.Classess.Ninfo;
+import com.example.multimedia.juniorseoul.Classess.ServiceGenerator;
+import com.example.multimedia.juniorseoul.Interface.NTinfoApiService;
+import com.example.multimedia.juniorseoul.Interface.NinfoApiService;
 
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class TnDetailActivity extends AppCompatActivity {
 
     private TextView trsr_gubun, gubun, k_name, c_name, description, quantitiy, address, age;
     private ImageView detail_img;
     private MapView mapView;
+    private String info, whichData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +35,7 @@ public class TnDetailActivity extends AppCompatActivity {
 
         double latitude = getIntent().getDoubleExtra("latitude", 0.0);
         double longitude = getIntent().getDoubleExtra("longitude", 0.0);
+        whichData = getIntent().getStringExtra("whichData");
 
         showMap(getIntent().getStringExtra("koreanNm"), latitude, longitude);
 
@@ -44,6 +57,17 @@ public class TnDetailActivity extends AppCompatActivity {
         quantitiy.setText(getIntent().getStringExtra("quantity"));
         gubun.setText(getIntent().getStringExtra("gubun"));
         age.setText(getIntent().getStringExtra("age"));
+
+        Log.d("statestate", getIntent().getStringExtra("stateN"));
+        Log.d("idid", String.valueOf(getIntent().getIntExtra("id", 0)));
+
+
+        if(whichData.equals("nationalT")){
+            setNationalTreasureInfoAPI(getIntent().getStringExtra("stateN"), getIntent().getIntExtra("id", 0));
+        }else if(whichData.equals("T")){
+            setTreasureInfoAPI(getIntent().getStringExtra("stateN"), getIntent().getIntExtra("id", 0));
+        }
+
 
     }
 
@@ -67,4 +91,55 @@ public class TnDetailActivity extends AppCompatActivity {
         container.addView(mapView);
 
     }
+
+    public void setNationalTreasureInfoAPI(final String state, final int nt_id){
+        NTinfoApiService api = ServiceGenerator.getNTinfoApiService();
+
+        Call<NTinfo> call = api.getNTinfoApi(state, nt_id);
+
+        call.enqueue(new Callback<NTinfo>() {
+            @Override
+            public void onResponse(Call<NTinfo> call, Response<NTinfo> response) {
+
+                if (response.isSuccessful()) {
+                    info = response.body().getInfo();
+
+                    description.setText(info);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NTinfo> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "서버가 꺼져있습니다", Toast.LENGTH_LONG).show();
+                t.printStackTrace();
+                finish();
+            }
+        });
+    }
+    public void setTreasureInfoAPI(final String state, final int nt_id){
+        NinfoApiService api = ServiceGenerator.getTinfoApiService();
+
+        Call<Ninfo> call = api.getNinfoApi(state, nt_id);
+
+        call.enqueue(new Callback<Ninfo>() {
+            @Override
+            public void onResponse(Call<Ninfo> call, Response<Ninfo> response) {
+
+                if (response.isSuccessful()) {
+                    info = response.body().getInfo();
+
+                    description.setText(info);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Ninfo> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "서버가 꺼져있습니다", Toast.LENGTH_LONG).show();
+                Log.getStackTraceString(t);
+                t.printStackTrace();
+                finish();
+            }
+        });
+    }
+
 }

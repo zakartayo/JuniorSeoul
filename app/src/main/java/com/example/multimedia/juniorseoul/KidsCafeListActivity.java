@@ -39,7 +39,7 @@ public class KidsCafeListActivity extends AppCompatActivity {
     private KidsCafeListAdapter adapter;
     private List<String> test  = new ArrayList<String>();
     private ArrayList<CafeList> cafeList;
-    private static final String KIDS_CAFE_URL = "http://218.148.183.226:20000";
+    private static final String KIDS_CAFE_URL = "http://54.180.82.151:20000";
     private int count;
     private ProgressDialog progressDialog;
     private String id, origin_state;

@@ -4,15 +4,19 @@ import com.example.multimedia.juniorseoul.Interface.KidsCafeImageApiService;
 import com.example.multimedia.juniorseoul.Interface.KidsCafeListApiService;
 import com.example.multimedia.juniorseoul.Interface.KidsCafeReplyApiService;
 import com.example.multimedia.juniorseoul.Interface.MuseumArtApiService;
+import com.example.multimedia.juniorseoul.Interface.NTinfoApiService;
 import com.example.multimedia.juniorseoul.Interface.NationalTreasureApiService;
+import com.example.multimedia.juniorseoul.Interface.NinfoApiService;
+import com.example.multimedia.juniorseoul.Interface.TreasureApiService;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
-    private static final String KIDS_CAFE_URL = "http://218.148.183.226:20000/kids_cafe/";
-    private static final String MUSEUM_ART_URL = "http://218.148.183.226:20000/";
-    private static final String NATIONAL_TREASURE_URL = "http://218.148.183.226:20000/trsr/NT/";
+    private static final String KIDS_CAFE_URL = "http://54.180.82.151:20000/kids_cafe/";
+    private static final String MUSEUM_ART_URL = "http://54.180.82.151:20000/";
+    private static final String NATIONAL_TREASURE_URL = "http://54.180.82.151:20000/trsr/NT/";
+    private static final String TREASURE_URL = "http://54.180.82.151:20000/trsr/T/";
 
     private static Retrofit getKidsCafeListInstance(){
         return new Retrofit.Builder()
@@ -49,6 +53,26 @@ public class ServiceGenerator {
                 .build();
     }
 
+    private static Retrofit getNTinfoInstance(){
+        return new Retrofit.Builder()
+                .baseUrl(NATIONAL_TREASURE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
+    private static Retrofit getTreasureInstance(){
+        return new Retrofit.Builder()
+                .baseUrl(TREASURE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+    private static Retrofit getTinfoInstance(){
+        return new Retrofit.Builder()
+                .baseUrl(TREASURE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
     public static KidsCafeListApiService getListApiService(){
         return getKidsCafeListInstance().create(KidsCafeListApiService.class);
     }
@@ -65,5 +89,14 @@ public class ServiceGenerator {
     }
     public static NationalTreasureApiService getNationalTreasureApiService(){
         return getNationalTreasureInstance().create(NationalTreasureApiService.class);
+    }
+    public static NTinfoApiService getNTinfoApiService(){
+        return getNTinfoInstance().create(NTinfoApiService.class);
+    }
+    public static TreasureApiService getTreasureApiService(){
+        return getTreasureInstance().create(TreasureApiService.class);
+    }
+    public static NinfoApiService getTinfoApiService(){
+        return getTinfoInstance().create(NinfoApiService.class);
     }
 }

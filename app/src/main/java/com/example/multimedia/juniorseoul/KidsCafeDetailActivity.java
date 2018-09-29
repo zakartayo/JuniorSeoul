@@ -67,7 +67,7 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
     private String id, state;
     private ArrayList<ImageList> imageList;
     private ArrayList<ReplyList> replyList;
-    private static final String KIDS_CAFE_URL = "http://218.148.183.226:20000";
+    private static final String KIDS_CAFE_URL = "http://54.180.82.151:20000";
     private int count, kids_id;
     private ArrayList<String> url_data;
     private ParcelBitmapList list;

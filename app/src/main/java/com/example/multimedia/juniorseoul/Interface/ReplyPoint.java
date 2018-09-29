@@ -10,7 +10,7 @@ import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface ReplyPoint {
-    public static final String BASE_URL = "http://218.148.183.226:20000/";
+    public static final String BASE_URL = "http://54.180.82.151:20000";
     @Headers("Content-Type: application/json")
     @POST("apply_comment")
     public Call<ReplyResultModel> do_send_reply(@Body String body);
