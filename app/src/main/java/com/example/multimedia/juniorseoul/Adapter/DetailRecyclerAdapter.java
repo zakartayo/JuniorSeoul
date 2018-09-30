@@ -3,6 +3,7 @@ package com.example.multimedia.juniorseoul.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,16 +16,20 @@ import com.example.multimedia.juniorseoul.KidsCafeImageActivity;
 import com.example.multimedia.juniorseoul.R;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class DetailRecyclerAdapter extends RecyclerView.Adapter<DetailRecyclerAdapter.ItemViewHolder> {
-    ParcelBitmapList mItems;
+
     ArrayList<String> images;
     int size;
     Context context;
 
-public DetailRecyclerAdapter(ParcelBitmapList items, int size, Context context, ArrayList<String> url_data){
-        mItems = items;
+public DetailRecyclerAdapter(int size, Context context, ArrayList<String> url_data){
         this.size = size;
         this.context = context;
         this.images = url_data;
@@ -41,8 +46,41 @@ public DetailRecyclerAdapter(ParcelBitmapList items, int size, Context context, 
 
 // View 의 내용을 해당 포지션의 데이터로 바꿉니다.
     @Override
-    public void onBindViewHolder(ItemViewHolder holder, final int position) {
-        holder.imageView.setImageBitmap(mItems.getBitmap(position));
+    public void onBindViewHolder(final ItemViewHolder holder, final int position) {
+
+        Thread mThread = new Thread(){
+            @Override
+            public void run(){
+                try{
+                    URL url = new URL(images.get(position));
+
+                    HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                    conn.setDoInput(true);
+                    conn.connect();
+
+                    InputStream is = conn.getInputStream();
+
+                    Bitmap bitmap = BitmapFactory.decodeStream(is);
+
+                    holder.imageView.setImageBitmap(bitmap);
+
+                }catch (MalformedURLException e){
+                    e.printStackTrace();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+
+            }
+        };
+
+        mThread.start();
+
+        try{
+            mThread.join();
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -20,7 +20,6 @@ import java.util.ArrayList;
 
 public class TabFragmentImage extends Fragment {
     private RecyclerView recyclerView;
-    private ParcelBitmapList list;
     private LinearLayoutManager mLayoutManager;
     private ArrayList<String> url_data;
 
@@ -29,8 +28,6 @@ public class TabFragmentImage extends Fragment {
 
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.tab_fragment_image, container, false);
 
-        list = new ParcelBitmapList();
-        ArrayList<ParcelBitmap> items = getArguments().getParcelableArrayList("image_datas");
 
         url_data = getArguments().getStringArrayList("url_data");
 
@@ -38,15 +35,14 @@ public class TabFragmentImage extends Fragment {
             Log.d("fimg_url", url_data.get(i));
         }
 
-        int size = items.size();
+        int size = url_data.size();
 
-        list = (ParcelBitmapList)items;
 
 
         recyclerView = (RecyclerView) view.findViewById(R.id.image_recyclerview);
         recyclerView.setHasFixedSize(true);
 
-        DetailRecyclerAdapter adapter = new DetailRecyclerAdapter(list, size, getActivity(), url_data);
+        DetailRecyclerAdapter adapter = new DetailRecyclerAdapter(size, getActivity(), url_data);
 
         mLayoutManager = new LinearLayoutManager(getActivity());
         mLayoutManager.setOrientation(LinearLayout.HORIZONTAL);

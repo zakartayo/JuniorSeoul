@@ -70,7 +70,6 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
     private static final String KIDS_CAFE_URL = "http://54.180.82.151:20000";
     private int count, kids_id;
     private ArrayList<String> url_data;
-    private ParcelBitmapList list;
     private TabLayout tabLayout;
     private ArrayList<String> info;
     private ProgressDialog progressDialog;
@@ -145,7 +144,7 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
             public void run() {
                 final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
                 final PagerAdapter adapter = new PagerAdapter
-                        (getSupportFragmentManager(), tabLayout.getTabCount(), info, list, replyList, kids_id, id, url_data);
+                        (getSupportFragmentManager(), tabLayout.getTabCount(), info,  replyList, kids_id, id, url_data);
 
                 for(int i=0; i<url_data.size(); i++){
                     Log.d("daimg_url", url_data.get(i));
@@ -273,7 +272,6 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     imageList = response.body().getImageList();
                     url_data = new ArrayList<String>();
-                    list = new ParcelBitmapList();
 
                     for(count=0; count<imageList.size(); count++){
                         Log.d("kidscafe image url", imageList.get(count).getImage_url());
@@ -294,7 +292,6 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
                                     InputStream is = conn.getInputStream();
 
                                     Bitmap bitmap = BitmapFactory.decodeStream(is);
-                                    list.add(bitmap);
                                     Log.d("bitmap 추가", "비트맵" + Integer.toString(count)+ "추가");
 
 
