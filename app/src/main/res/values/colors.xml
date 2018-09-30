@@ -17,4 +17,8 @@
     <color name="white">#FFFFFF</color>
     <color name="statecolor">#c018abf4</color>
     <color name="indicator">#246383</color>
+    <color name="state">#ffc800</color>
+    <color name="back">#47abde</color>
+    <color name="bar2">#bce5ff</color>
+    <color name="indicator2">#184258</color>
 </resources>

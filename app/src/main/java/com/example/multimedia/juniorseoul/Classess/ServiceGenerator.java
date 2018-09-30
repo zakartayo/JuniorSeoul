@@ -7,6 +7,7 @@ import com.example.multimedia.juniorseoul.Interface.MuseumArtApiService;
 import com.example.multimedia.juniorseoul.Interface.NTinfoApiService;
 import com.example.multimedia.juniorseoul.Interface.NationalTreasureApiService;
 import com.example.multimedia.juniorseoul.Interface.NinfoApiService;
+import com.example.multimedia.juniorseoul.Interface.PlayCultureApiService;
 import com.example.multimedia.juniorseoul.Interface.TreasureApiService;
 
 import retrofit2.Retrofit;
@@ -14,9 +15,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
     private static final String KIDS_CAFE_URL = "http://54.180.82.151:20000/kids_cafe/";
+    private static final String KIDS_CAFE_REPLY_URL = "http://54.180.82.151:20000/";
     private static final String MUSEUM_ART_URL = "http://54.180.82.151:20000/";
     private static final String NATIONAL_TREASURE_URL = "http://54.180.82.151:20000/trsr/NT/";
     private static final String TREASURE_URL = "http://54.180.82.151:20000/trsr/T/";
+    private static final String PLAY_CULTURE_URL = "http://54.180.82.151:20000/play_culture/";
 
     private static Retrofit getKidsCafeListInstance(){
         return new Retrofit.Builder()
@@ -72,6 +75,13 @@ public class ServiceGenerator {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
+    private static Retrofit getPlayCultureInstance(){
+        return new Retrofit.Builder()
+                .baseUrl(PLAY_CULTURE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
 
     public static KidsCafeListApiService getListApiService(){
         return getKidsCafeListInstance().create(KidsCafeListApiService.class);
@@ -98,5 +108,8 @@ public class ServiceGenerator {
     }
     public static NinfoApiService getTinfoApiService(){
         return getTinfoInstance().create(NinfoApiService.class);
+    }
+    public static PlayCultureApiService getPlayCultureApiService(){
+        return getPlayCultureInstance().create(PlayCultureApiService.class);
     }
 }

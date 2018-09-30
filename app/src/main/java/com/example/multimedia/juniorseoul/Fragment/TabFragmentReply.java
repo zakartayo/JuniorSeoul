@@ -54,6 +54,7 @@ public class TabFragmentReply  extends Fragment {
         for(int i=0; i<replyIdList.size(); i++){
             adapter.addItem(replyIdList.get(i), replyContentList.get(i), replyDateList.get(i));
             Log.d("datedata", replyDateList.get(i));
+            Log.d("user_id", String.valueOf(replyIdList.get(i)));
         }
 
         final EditText edit = (EditText) view.findViewById(R.id.reply_edittext);

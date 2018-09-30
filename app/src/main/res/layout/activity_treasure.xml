@@ -7,6 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         tools:context="com.example.multimedia.juniorseoul.TreasureActivity"
@@ -28,7 +29,7 @@
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:id="@+id/tjoong"
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/junggu"
                 android:onClick="onButtonClick"/>
 
             <ImageView
@@ -37,7 +38,7 @@
                 android:layout_weight="1"
                 android:id="@+id/teunpyung"
                 android:onClick="onButtonClick"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@drawable/eunpyeonggu"/>
 
             <ImageView
                 android:layout_width="0dp"
@@ -45,7 +46,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tyongsan"
                 android:onClick="onButtonClick"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@drawable/yongsangu"/>
 
 
         </LinearLayout>
@@ -62,7 +63,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tsongpa"
                 android:onClick="onButtonClick"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@drawable/songpagu"/>
 
             <ImageView
                 android:layout_width="0dp"
@@ -70,7 +71,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tsungbuk"
                 android:onClick="onButtonClick"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@drawable/sungbukgu"/>
 
             <ImageView
                 android:layout_width="0dp"
@@ -78,7 +79,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tseocho"
                 android:onClick="onButtonClick"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@drawable/seochogu"/>
 
         </LinearLayout>
 
@@ -94,7 +95,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tseodamun"
                 android:onClick="onButtonClick"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@drawable/seodamungu"/>
 
             <ImageView
                 android:layout_width="0dp"
@@ -102,7 +103,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tmapo"
                 android:onClick="onButtonClick"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@drawable/mapogu"/>
 
             <ImageView
                 android:layout_width="0dp"
@@ -110,7 +111,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tdongjak"
                 android:onClick="onButtonClick"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@drawable/dongjakgu"/>
 
         </LinearLayout>
 
@@ -127,7 +128,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tdongdaemun"
                 android:onClick="onButtonClick"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@drawable/dongdaemungu"/>
 
             <ImageView
                 android:layout_width="0dp"
@@ -135,7 +136,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tnowon"
                 android:onClick="onButtonClick"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@drawable/nowongu"/>
 
 
             <ImageView
@@ -144,7 +145,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tkwangjin"
                 android:onClick="onButtonClick"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@drawable/gwangjingu"/>
 
         </LinearLayout>
 
@@ -161,7 +162,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tkwanak"
                 android:onClick="onButtonClick"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@drawable/kwanakgu"/>
 
             <ImageView
                 android:layout_width="0dp"
@@ -169,7 +170,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tkangsoe"
                 android:onClick="onButtonClick"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@drawable/kangseogu"/>
 
 
             <ImageView
@@ -178,7 +179,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tkangbuk"
                 android:onClick="onButtonClick"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@drawable/kangbukgu"/>
 
         </LinearLayout>
 
@@ -195,7 +196,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tkangnam"
                 android:onClick="onButtonClick"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@drawable/kangnamgu"/>
 
             <ImageView
                 android:layout_width="0dp"
@@ -203,7 +204,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tjongro"
                 android:onClick="onButtonClick"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@drawable/jonglogu"/>
 
 
             <TextView

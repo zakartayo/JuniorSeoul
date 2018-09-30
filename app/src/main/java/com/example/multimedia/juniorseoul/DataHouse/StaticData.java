@@ -779,6 +779,7 @@ public class StaticData {
         add(new TImgModel(R.drawable.trsr_t_l_591));
     }};
     public static List<TImgModel> tDongjak = new ArrayList<TImgModel>() {{
+        add(new TImgModel(R.drawable.trsr_t_m_087));
         add(new TImgModel(R.drawable.trsr_t_m_253));
         add(new TImgModel(R.drawable.trsr_t_m_254));
         add(new TImgModel(R.drawable.trsr_t_m_282));

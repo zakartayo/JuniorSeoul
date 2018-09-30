@@ -14,9 +14,9 @@
         android:paddingRight="24dp">
 
         <ImageView android:src="@drawable/logo"
-            android:layout_width="wrap_content"
-            android:layout_height="72dp"
-            android:layout_marginBottom="24dp"
+            android:layout_width="200dp"
+            android:layout_height="120dp"
+            android:scaleType="fitXY"
             android:layout_gravity="center_horizontal" />
 
         <!-- Email Label -->
@@ -64,7 +64,10 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="54dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="14dp"
+            android:background="@color/bar"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:padding="12dp"
             android:text="가입하기"/>
 
@@ -72,7 +75,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="Already a member? Login"
+            android:text="이미 가입하셨나요? 로그인으로 이동"
             android:gravity="center"
             android:textSize="16dip"/>
 
