@@ -22,6 +22,7 @@ public class TabFragmentImage extends Fragment {
     private RecyclerView recyclerView;
     private ParcelBitmapList list;
     private LinearLayoutManager mLayoutManager;
+    private ArrayList<String> url_data;
 
     @Override
     public ViewGroup onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -31,6 +32,12 @@ public class TabFragmentImage extends Fragment {
         list = new ParcelBitmapList();
         ArrayList<ParcelBitmap> items = getArguments().getParcelableArrayList("image_datas");
 
+        url_data = getArguments().getStringArrayList("url_data");
+
+        for(int i=0; i<url_data.size(); i++){
+            Log.d("fimg_url", url_data.get(i));
+        }
+
         int size = items.size();
 
         list = (ParcelBitmapList)items;
@@ -39,7 +46,7 @@ public class TabFragmentImage extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.image_recyclerview);
         recyclerView.setHasFixedSize(true);
 
-        DetailRecyclerAdapter adapter = new DetailRecyclerAdapter(list, size, getActivity());
+        DetailRecyclerAdapter adapter = new DetailRecyclerAdapter(list, size, getActivity(), url_data);
 
         mLayoutManager = new LinearLayoutManager(getActivity());
         mLayoutManager.setOrientation(LinearLayout.HORIZONTAL);

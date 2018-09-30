@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,16 +15,19 @@ import com.example.multimedia.juniorseoul.KidsCafeImageActivity;
 import com.example.multimedia.juniorseoul.R;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 
 public class DetailRecyclerAdapter extends RecyclerView.Adapter<DetailRecyclerAdapter.ItemViewHolder> {
     ParcelBitmapList mItems;
+    ArrayList<String> images;
     int size;
     Context context;
 
-public DetailRecyclerAdapter(ParcelBitmapList items, int size, Context context){
+public DetailRecyclerAdapter(ParcelBitmapList items, int size, Context context, ArrayList<String> url_data){
         mItems = items;
         this.size = size;
         this.context = context;
+        this.images = url_data;
     }
 
 
@@ -44,10 +48,14 @@ public DetailRecyclerAdapter(ParcelBitmapList items, int size, Context context){
             public void onClick(View view) {
                 Intent intent = new Intent(context, KidsCafeImageActivity.class);
 
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                String img = images.get(position);
+
+                intent.putExtra("image_url", img);
+                Log.d("daimg_url", img);
+                /*ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 mItems.get(position).getBitmap().compress(Bitmap.CompressFormat.JPEG, 50 , stream);
                 byte[] bytes = stream.toByteArray();
-                intent.putExtra("bitmap", bytes);
+                intent.putExtra("bitmap", bytes);*/
 
                 context.startActivity(intent);
             }

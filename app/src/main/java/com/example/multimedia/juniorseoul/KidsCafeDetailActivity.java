@@ -145,7 +145,11 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
             public void run() {
                 final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
                 final PagerAdapter adapter = new PagerAdapter
-                        (getSupportFragmentManager(), tabLayout.getTabCount(), info, list, replyList, kids_id, id);
+                        (getSupportFragmentManager(), tabLayout.getTabCount(), info, list, replyList, kids_id, id, url_data);
+
+                for(int i=0; i<url_data.size(); i++){
+                    Log.d("daimg_url", url_data.get(i));
+                }
                 Log.d("pager 호출", "pager 호출");
                 viewPager.setAdapter(adapter);
                 viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));

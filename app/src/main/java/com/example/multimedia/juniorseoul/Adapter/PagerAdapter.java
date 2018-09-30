@@ -19,11 +19,11 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     ArrayList<String> info = null;
     ParcelBitmapList list = new ParcelBitmapList();
     ArrayList<ReplyList> replyList = null;
-    ArrayList<String> replyIdList, replyContentList, replyDateList;
+    ArrayList<String> replyIdList, replyContentList, replyDateList, url_data;
     int kids_id;
     String user_id;
 
-    public PagerAdapter(FragmentManager fm, int NumOfTabs, ArrayList<String> info, ParcelBitmapList list, ArrayList<ReplyList> replyList, int kids_id, String user_id) {
+    public PagerAdapter(FragmentManager fm, int NumOfTabs, ArrayList<String> info, ParcelBitmapList list, ArrayList<ReplyList> replyList, int kids_id, String user_id, ArrayList<String> url_data) {
         super(fm);
         this.mNumOfTabs = NumOfTabs;
         this.info = info;
@@ -31,6 +31,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         this.replyList = replyList;
         this.kids_id = kids_id;
         this.user_id = user_id;
+        this.url_data = url_data;
 
         replyIdList = new ArrayList<String>();
         replyContentList = new ArrayList<String>();
@@ -57,10 +58,15 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                 return tab1;
             case 1:
                 TabFragmentImage tab2 = new TabFragmentImage();
-                Bundle bundle1 = new Bundle(2);
+                Bundle bundle1 = new Bundle(3);
                 bundle1.putParcelableArrayList("image_datas",list);
+                bundle1.putStringArrayList("url_data", url_data);
+                for(int i=0; i<url_data.size(); i++){
+                    Log.d("fimg_url", url_data.get(i));
+                }
                 Log.d("이미지 번들", "이미지 번들");
                 tab2.setArguments(bundle1);
+
 
                 return tab2;
             case 2:
