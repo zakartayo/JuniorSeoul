@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/indicator2"
+    android:background="@color/white"
     tools:context="com.example.multimedia.juniorseoul.MainActivity">
 
 
     <kr.go.seoul.airquality.AirQualityButtonTypeA
         android:id="@+id/typeAbtn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="150dp">
 
     </kr.go.seoul.airquality.AirQualityButtonTypeA >
 

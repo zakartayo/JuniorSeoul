@@ -128,7 +128,7 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
             public void run() {
                 setKidsCafeReplyListAPI(state, kids_id);
             }
-        }, 1800);
+        }, 600);
 
         Handler delayHandler3 = new Handler();
         delayHandler3.postDelayed(new Runnable() {
@@ -136,7 +136,7 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
             public void run() {
                 setKidsCafeImageListAPI(state, kids_id);
             }
-        }, 800);
+        }, 500);
 
 
         Handler delayHandler2 = new Handler();
@@ -167,7 +167,7 @@ public class KidsCafeDetailActivity extends AppCompatActivity {
                 });
                 progressDialog.dismiss();
             }
-        }, 3000);
+        }, 3500);
 
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("정보"));
